@@ -31,13 +31,17 @@
     tick: function() {
       var now     = new Date(),
           hours   = now.getHours(),
-          minutes = now.getMinutes(),
+          minutes = this.formatMinutes(now.getMinutes()),
           seconds = now.getSeconds(),
           amPm    = this.getAmPm(hours),
           hours   = this.getNonMilitary(hours);
 
       this.el.innerHTML = hours + ':' + minutes + amPm;
       requestAnimationFrame(this.tick);
+    },
+
+    formatMinutes: function(minutes) {
+      return minutes < 10 ? '0' + minutes : minutes;
     },
 
     getAmPm: function(hours) {
