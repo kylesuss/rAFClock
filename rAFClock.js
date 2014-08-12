@@ -1,4 +1,15 @@
+
+//////////////////////
+/// requestAnimationFrame Clock
+//////////////////////
+
+'use strict';
+
 (function() {
+
+  //////////////////////
+  /// Object constructor
+  //////////////////////
 
   this.rAFClock = function(el, options) {
 
@@ -11,6 +22,10 @@
 
   rAFClock.prototype = {
 
+    //////////////////////
+    /// Find the DOM node to use
+    //////////////////////
+
     getElement: function(el) {
       if (typeof(el) == 'string') {
         return document.getElementById(el);   
@@ -19,14 +34,26 @@
       }
     },
 
+    //////////////////////
+    /// Bind methods to this
+    //////////////////////
+
     bindMethods: function() {
       this.start = bind(this.start, this);
       this.tick  = bind(this.tick, this);
     },
 
+    //////////////////////
+    /// Start the rAF process
+    //////////////////////
+
     start: function() {
       requestAnimationFrame(this.tick);
     },
+
+    //////////////////////
+    /// Update the clock
+    //////////////////////
 
     tick: function() {
       var now     = new Date(),
@@ -39,6 +66,10 @@
       this.el.innerHTML = hours + ':' + minutes + amPm;
       requestAnimationFrame(this.tick);
     },
+
+    //////////////////////
+    /// Formatting helpers
+    //////////////////////
 
     formatMinutes: function(minutes) {
       return minutes < 10 ? '0' + minutes : minutes;
@@ -53,6 +84,10 @@
     }
 
   }
+
+  //////////////////////
+  /// Bind a function to a context
+  //////////////////////
 
   var bind = function(fn, context) {
     return function() {
