@@ -11,16 +11,16 @@
   /// Object constructor
   //////////////////////
 
-  this.rAFClock = function(el, options) {
+  window.rAFClock = function(el, options) {
 
     this.el = this.getElement(el);
     this.options = options || {};
     this.bindMethods();
     this.start();
 
-  }
+  };
 
-  rAFClock.prototype = {
+  window.rAFClock.prototype = {
 
     //////////////////////
     /// Find the DOM node to use
@@ -59,11 +59,10 @@
       var now     = new Date(),
           hours   = now.getHours(),
           minutes = this.formatMinutes(now.getMinutes()),
-          seconds = now.getSeconds(),
           amPm    = this.getAmPm(hours),
-          hours   = this.getNonMilitary(hours);
+          nonMilitaryHours = this.getNonMilitary(hours);
 
-      this.el.innerHTML = hours + ':' + minutes + amPm;
+      this.el.innerHTML = nonMilitaryHours + ':' + minutes + amPm;
       requestAnimationFrame(this.tick);
     },
 
@@ -83,7 +82,7 @@
       return hours > 12 ? hours % 12 : hours;
     }
 
-  }
+  };
 
   //////////////////////
   /// Bind a function to a context
