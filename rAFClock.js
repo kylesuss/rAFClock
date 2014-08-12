@@ -3,9 +3,9 @@
 /// requestAnimationFrame Clock
 //////////////////////
 
-'use strict';
-
 (function() {
+  
+  'use strict';
 
   //////////////////////
   /// Object constructor
@@ -99,3 +99,4 @@
   };
 
 })();
+
