@@ -4,7 +4,7 @@
 //////////////////////
 
 (function() {
-  
+
   'use strict';
 
   //////////////////////
@@ -31,7 +31,7 @@
     //////////////////////
 
     getElement: function(el) {
-      if (typeof(el) == 'string') {
+      if (typeof(el) === 'string') {
         return document.getElementById(el);   
       } else {
         return el;
